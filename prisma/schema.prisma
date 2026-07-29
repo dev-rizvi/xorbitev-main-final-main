@@ -1,0 +1,171 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BatteryDetail {
+  id                  String   @id @default(uuid())
+  sn                  String   @unique @default(cuid())
+  name                String?
+  category            String?
+  image               String?  // Main image/upload
+  
+  // Technical Specs from Image
+  nominalVoltage      String?
+  fullyChargedVoltage String?
+  dischargeCutOff    String?
+  nominalCapacity     String?
+  totalEnergy         String?
+  cellConfiguration   String?
+  motorCompatibility  String?
+  application         String?
+  avgRidingCurrent    String?
+  estRuntime          String?
+  estRange            String?
+  energyEfficiency    String?
+  cycleLife           String?
+  chargingTime        String?
+  warrantyMonths      Int?     @default(0)
+
+  status              String?  @default("active")
+  showOnWebsite       Boolean  @default(true)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  deletedAt           DateTime? // Soft Delete
+
+  assignments         BatteryAssignment[]
+  repairs             BatteryRepair[]
+  units               BatteryUnit[]
+}
+
+model BatteryUnit {
+  id              String    @id @default(uuid())
+  qrNumber        String    @unique
+  modelId         String
+  dealerId        String?
+  manufactureDate DateTime?
+  assignedAt      DateTime?
+  status          String    @default("active") // active, faulty, retired
+  
+  // Client Details (End User)
+  clientName      String?
+  clientPhone     String?
+  clientAssignedAt DateTime?
+  remark          String?
+  dealerRemark    String?
+  warrantyMonthsOverride Int?
+  supplierId      String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  model           BatteryDetail @relation(fields: [modelId], references: [id])
+  dealer          Dealer?       @relation(fields: [dealerId], references: [id])
+  supplier        Supplier?     @relation(fields: [supplierId], references: [id])
+}
+
+
+model Dealer {
+  id        String   @id @default(uuid())
+  name      String
+  email     String?  @unique
+  phone     String?
+  address   String?
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime? // Soft Delete
+  
+  assignments BatteryAssignment[]
+  repairs     BatteryRepair[]
+  assignedUnits BatteryUnit[]
+}
+
+model BatteryAssignment {
+  id              String   @id @default(uuid())
+  dealerId        String
+  batteryDetailId String
+  quantity        Int      @default(1)
+  assignedAt      DateTime @default(now())
+  
+  dealer          Dealer        @relation(fields: [dealerId], references: [id])
+  battery         BatteryDetail @relation(fields: [batteryDetailId], references: [id])
+}
+
+model BatteryRepair {
+  id              String   @id @default(uuid())
+  dealerId        String?
+  batteryDetailId String
+  qrNumber        String?  // The specific unit's QR number
+  quantity        Int      @default(1)
+  issue           String?  // Initial problem reported
+  problemRemark   String?  // Detailed diagnosis
+  solvedRemark    String?  // Engineer resolution note
+  status          String   @default("pending") // pending, in_progress, completed, returned
+  receivedAt      DateTime @default(now())
+  solvedAt        DateTime? // When it was resolved
+  updatedAt       DateTime @updatedAt
+
+  dealer          Dealer?       @relation(fields: [dealerId], references: [id])
+  battery         BatteryDetail @relation(fields: [batteryDetailId], references: [id])
+}
+
+model SystemSettings {
+  id          String   @id @default("global")
+  companyName String?
+  email       String?
+  phone       String?
+  address     String?
+  logo        String?  
+  lastQRNumber Int?      @default(0)
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactLead {
+  id           String   @id @default(uuid())
+  name         String
+  phone        String?
+  email        String?
+  focus        String?
+  requirements String?
+  status       String   @default("new") // new, contacted, resolved
+  createdAt    DateTime @default(now())
+}
+
+model Supplier {
+  id            String   @id @default(uuid())
+  name          String
+  contactPerson String?
+  email         String?
+  phone         String?
+  address       String?
+  gstNumber     String?
+  status        String   @default("active")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  deletedAt     DateTime?
+  
+  batteryUnits  BatteryUnit[]
+}
+
+model GeneratedQR {
+  id        String   @id @default(uuid())
+  qrCode    String   @unique
+  prefix    String
+  number    Int
+  createdAt DateTime @default(now())
+}
+
