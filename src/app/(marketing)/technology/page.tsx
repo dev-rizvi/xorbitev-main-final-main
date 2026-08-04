@@ -14,7 +14,7 @@ const techFeatures = [
   },
   {
     title: "Eco-Grade LFP",
-    description: "High-density Lithium Iron Phosphate with 3000+ lifecycle safety and zero cobalt usage.",
+    description: "High-density Lithium Iron Phosphate with 2000+ lifecycle safety and zero cobalt usage.",
     icon: BatteryFull,
   },
 ];
