@@ -19,10 +19,10 @@ export function Logo({
       fetch("/api/settings")
         .then(res => res.json())
         .then(data => {
-          if (data?.logo) setLogo(data.logo);
-          if (data?.companyName) setCompanyName(data.companyName);
+          if (data.logo) setLogo(data.logo);
+          if (data.companyName) setCompanyName(data.companyName);
         })
-        .catch(() => {});
+        .catch(err => console.error("Logo settings fetch failed:", err));
     }
   }, [initialSrc]);
 

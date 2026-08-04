@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 interface PageHeroProps {
   title: string;
   subtitle: string;
-  description: string;
+  description?: string;
   badge: string;
   icon: React.ElementType;
 }
@@ -39,14 +39,16 @@ export function PageHero({ title, subtitle, description, badge, icon: Icon }: Pa
         </motion.h1>
         
         {/* Subtext */}
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-white/60 text-lg md:text-xl font-medium max-w-5xl mx-auto leading-relaxed"
-        >
-           {description}
-        </motion.p>
+        {description && (
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-white/60 text-lg md:text-xl font-medium max-w-5xl mx-auto leading-relaxed"
+          >
+             {description}
+          </motion.p>
+        )}
       </div>
     </section>
   );

@@ -17,11 +17,6 @@ const techFeatures = [
     description: "High-density Lithium Iron Phosphate with 3000+ lifecycle safety and zero cobalt usage.",
     icon: BatteryFull,
   },
-  {
-    title: "IP67 Protection",
-    description: "Industrial-grade waterproofing for operation in extreme monsoon and vibration conditions.",
-    icon: ShieldCheck,
-  },
 ];
 
 
@@ -122,7 +117,7 @@ export default function TechnologyPage() {
                 initial="initial"
                 whileInView="whileInView"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
             >
                 {techFeatures.map((item, index) => (
                 <motion.div 
@@ -165,21 +160,8 @@ export default function TechnologyPage() {
                   
                   <div className="space-y-6 text-slate-500 font-medium leading-relaxed">
                       <p>
-                        Our batteries undergo extreme stress tests at our dedicated R&D facility. From nail penetration to high-altitude thermal simulation, we ensure zero compromise on safety for our global enterprise partners.
+                        BIS-certified Lithium Battery Safety: The battery pack is tested for electrical, mechanical, and thermal safety under BIS standards before being approved for the Indian market.
                       </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {[
-                        { icon: Microscope, t: "Laboratory Grade R&D" },
-                        { icon: FlaskConical, t: "Chemical Stability" },
-                        { icon: Recycle, t: "Zero Thermal Runway" }
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 group">
-                           <div className="w-2 h-2 rounded-full bg-primary group-hover:scale-150 transition-transform"></div>
-                           <span className="text-[10px] font-black text-secondary uppercase tracking-widest">{item.t}</span>
-                        </div>
-                      ))}
                   </div>
               </motion.div>
 
@@ -192,9 +174,9 @@ export default function TechnologyPage() {
               >
                   <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
                   <div className="relative z-10">
-                      <div className="text-primary font-black text-5xl mb-6 italic tracking-tighter">0% Failure.</div>
-                      <p className="text-white/40 text-sm font-medium leading-relaxed mb-8">
-                        Every XORBIT EV pack is rigorously analyzed and certified to meet BIS and ISO standards, ensuring a mission-critical reliability rate of 99.9%.
+                      <div className="text-primary font-black text-5xl mb-6 italic tracking-tighter">100% Certified.</div>
+                      <p className="text-white/60 text-sm font-medium leading-relaxed mb-8">
+                        Every Xorbit EV Pack is Rigourously tested to meet BIS standards and has been tested and certified in BIS Authorised Testing Labs
                       </p>
                       <div className="flex gap-4">
                           <div className="bg-white/5 border border-white/10 px-6 py-2 rounded-full text-[9px] font-black tracking-widest uppercase">ISO 9001</div>
@@ -220,12 +202,6 @@ export default function TechnologyPage() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent opacity-60"></div>
-              <div className="absolute bottom-10 left-10">
-                  <div className="flex items-center gap-4">
-                      <div className="w-12 h-1 bg-primary rounded-full"></div>
-                      <span className="text-[10px] font-black text-white uppercase tracking-[0.5em]">R&D Hub | Kashipur Unit</span>
-                  </div>
-              </div>
           </motion.div>
       </section>
 

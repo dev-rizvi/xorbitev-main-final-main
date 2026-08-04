@@ -11,22 +11,21 @@ const slides = [
   {
     id: 1,
     number: "01",
-    category: "LFP Cell Engineering",
+    category: "Low speed E-scooters",
     headline: ["Next-Gen", "Energy", "Ecosystems"],
     accentWord: 1, // index of headline word to colorize
-    tagline: "Redefining industrial power through high-density LFP manufacturing and intelligent battery management ecosystems.",
+    tagline: "Refining Low speed E-bike performance through LFP chemistry which provides a high cycle lifespan, stable thermal tolerance, and worry-free daily charging.",
     image: "/tech-hero.png",
     thumb: "/tech-hero.png",
     primaryCta: { label: "Start Partnership", href: "/contact" },
     secondaryCta: { label: "Explore Technology", href: "/technology" },
     stats: [
-      { value: "6000+", label: "Cycle Life" },
-      { value: "IP67", label: "Rating" },
+      { value: "2000+", label: "Cycle Life" },
       { value: "99.8%", label: "Efficiency" },
     ],
     icon: <Zap className="w-5 h-5" />,
     accentColor: "#2563EB",
-    tag: "Industrial Power",
+    tag: "Low speed E- scooters",
   },
   {
     id: 2,
@@ -40,8 +39,8 @@ const slides = [
     primaryCta: { label: "Start Partnership", href: "/contact" },
     secondaryCta: { label: "View EV Cycles", href: "/ev-cycles" },
     stats: [
-      { value: "150 km", label: "Max Range" },
-      { value: "1000W", label: "Motor" },
+      { value: "40 km", label: "Max Range" },
+      { value: "250W", label: "Motor" },
       { value: "Zero", label: "Emissions" },
     ],
     icon: <Bike className="w-5 h-5" />,
@@ -51,8 +50,8 @@ const slides = [
   {
     id: 3,
     number: "03",
-    category: "LFP Power Modules",
-    headline: ["Mission-Critical", "Power", "Modules"],
+    category: "Solar battery packs",
+    headline: ["Solar Inverter", "Battery Packs"],
     accentWord: 1,
     tagline: "BIS-certified lithium battery packs with active balancing and advanced thermal management systems.",
     image: "/battery-hero.png",
@@ -66,7 +65,7 @@ const slides = [
     ],
     icon: <Battery className="w-5 h-5" />,
     accentColor: "#F59E0B",
-    tag: "Battery Packs",
+    tag: "Solar battery packs",
   },
 ];
 
@@ -363,7 +362,7 @@ export default function Home() {
                     >
                       {slide.icon} {slide.category}
                     </div>
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${slide.stats.length}, minmax(0, 1fr))` }}>
                       {slide.stats.map((s, i) => (
                         <div key={i} className="bg-white/5 backdrop-blur-md rounded-xl p-3 border border-white/10">
                           <div className="text-base font-black text-white leading-none mb-1" style={{ color: i === 0 ? slide.accentColor : "white" }}>
@@ -484,14 +483,14 @@ export default function Home() {
               </h3>
 
               <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-xl">
-                Our state-of-the-art facility in Kashipur is engineered for high-volume, zero-defect production. From laser-welding to AI-driven cell balancing, we define the standard for lithium-ion reliability.
+                Our facility in kashipur is Engineered for high volume, High Precision and Low defect-Production. From Automatic Spot Welding to AI-driven battery balancing machines, We define Standard for Lithium Battery Reliability.
               </p>
 
               <div className="grid grid-cols-2 gap-8 pt-6">
                 {[
-                  { label: "Daily Capacity", value: "500+", unit: "Packs", icon: <Database className="w-5 h-5" /> },
-                  { label: "R&D Engineers", value: "25+", unit: "Experts", icon: <Users className="w-5 h-5" /> },
-                  { label: "Clean Room", value: "ISO-5", unit: "Certified", icon: <ShieldCheck className="w-5 h-5" /> },
+                  { label: "Daily Capacity", value: "100+", unit: "Packs", icon: <Database className="w-5 h-5" /> },
+                  { label: "R&D Consultants", value: "25+", unit: "Experts", icon: <Users className="w-5 h-5" /> },
+                  { label: "Certification", value: "BIS", unit: "Certified", icon: <ShieldCheck className="w-5 h-5" /> },
                   { label: "Testing Hub", value: "100%", unit: "QA/QC", icon: <Trophy className="w-5 h-5" /> }
                 ].map((stat, i) => (
                   <div key={i} className="flex gap-4 items-start group">
@@ -509,13 +508,13 @@ export default function Home() {
               </div>
 
               <div className="pt-10">
-                <Link href="/about" aria-label="Read More About XORBIT EV">
+                <Link href="/about">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="bg-secondary text-white px-10 py-5 rounded-full font-black text-[10px] uppercase tracking-[0.3em] flex items-center gap-4 shadow-xl hover:bg-secondary/90 transition-all"
                   >
-                    Read More About XORBIT EV <ArrowRight className="w-4 h-4 text-primary" />
+                    Read More <ArrowRight className="w-4 h-4 text-primary" />
                   </motion.button>
                 </Link>
               </div>
@@ -583,11 +582,10 @@ export default function Home() {
             <div className="w-32 h-1.5 bg-primary mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
               { title: "E-Bike & E-Scooter", image: "/e-bike.jpg" },
               { title: "E-Rickshaw & E-Cargo", image: "/e-r.webp" },
-              { title: "Telecommunication Battery", image: "/net.webp" },
               { title: "Solar Battery", image: "/solo.webp" }
             ].map((industry, idx) => (
               <motion.div
@@ -701,7 +699,7 @@ export default function Home() {
             {[
               { icon: Battery, title: "LFP PACKS", desc: "Industrial-grade lithium modules for high-capacity EV mobility.", link: "/batteries" },
               { icon: Bike, title: "X-MOBILITY", desc: "Precision electric cycle fleets for urban logistics.", link: "/ev-cycles" },
-              { icon: Zap, title: "R&D HUB", desc: "Custom BMS hardware and intelligence engineering.", link: "/technology" }
+              { icon: Zap, title: "BATTERY CUSTOMIZATION", desc: "Custom BMS hardware and intelligence engineering.", link: "/technology" }
             ].map((item, i) => (
               <motion.div
                 key={i}

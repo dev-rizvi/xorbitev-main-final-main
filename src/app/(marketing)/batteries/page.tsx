@@ -67,12 +67,12 @@ export default function BatteriesPage() {
   return (
     <div ref={containerRef} className="bg-white min-h-screen overflow-x-hidden">
       {/* 1. Cinematic Hero */}
+      {/* 1. Cinematic Hero */}
       <PageHero 
         title="Extreme"
         subtitle="Precision Cells"
         badge="High-Performance Energy Storage"
         icon={Zap}
-        description="Meticulously engineered lithium systems designed for industrial longevity and unconditional safety in the most demanding environments."
       />
 
       {/* 2. Value Proposition Grid */}
@@ -85,7 +85,7 @@ export default function BatteriesPage() {
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             {[
-              { icon: Factory, title: "Nano-LFP Cell", desc: "Highest energy density LiFePO4 cells with 3000+ charge cycles." },
+              { icon: Factory, title: "LFP Cell", desc: "Highest energy density LiFePO4 cells with 2000+ charge cycles." },
               { icon: Settings, title: "Intelligent BMS", desc: "Real-time AI balancing and 24/7 autonomous safety monitoring." },
               { icon: Database, title: "Density Max", desc: "Compact form factor with maximum energy-to-weight ratio." }
             ].map((item, index) => (
@@ -118,7 +118,7 @@ export default function BatteriesPage() {
                 className="text-center mb-16"
             >
                 <h2 className="text-[10px] font-black text-primary uppercase tracking-[0.5em] mb-4">The Collection</h2>
-                <h3 className="text-4xl md:text-5xl font-display font-black text-secondary tracking-tighter uppercase">Industrial <span className="text-primary italic">Lineup.</span></h3>
+                <h3 className="text-4xl md:text-5xl font-display font-black text-secondary tracking-tighter uppercase">Low-Speed EV <span className="text-primary italic">Lineup.</span></h3>
             </motion.div>
 
             {loading ? (
@@ -220,7 +220,7 @@ export default function BatteriesPage() {
                           </thead>
                           <tbody className="divide-y divide-slate-50">
                               {[
-                                { m: "Cycle Life", o: "300 - 500", x: "3000+" },
+                                { m: "Cycle Life", o: "300 - 500", x: "2000+" },
                                 { m: "Weight", o: "Heavy (~28kg)", x: "Ultra Light (~12kg)" },
                                 { m: "Charging", o: "8-10 Hours", x: "2-4 Hours" },
                                 { m: "Maintenance", o: "High", x: "Zero" },

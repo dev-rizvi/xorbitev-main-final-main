@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Zap, Mail, Phone, MapPin } from "lucide-react";
+import { Zap, Mail, Phone, MapPin, Info } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 
 export function Footer({
@@ -150,6 +150,21 @@ export function Footer({
           </div>
 
         </div>{/* ← grid closes here */}
+
+        {/* Disclaimer Notice */}
+        <div className="mb-12 p-6 md:p-7 rounded-2xl bg-gradient-to-r from-white/[0.04] via-white/[0.02] to-transparent border border-white/10 border-l-4 border-l-primary shadow-xl backdrop-blur-md flex flex-col md:flex-row items-start md:items-center gap-4 group">
+          <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 text-primary group-hover:scale-110 transition-transform duration-300">
+            <Info className="w-5 h-5" />
+          </div>
+          <div className="flex-1">
+            <span className="inline-block text-[10px] font-black text-primary uppercase tracking-[0.25em] mb-1">
+              Notice / Disclaimer
+            </span>
+            <p className="text-white/60 text-xs md:text-sm font-medium leading-relaxed">
+              The product images shown are for illustration purposes only and may not be an exact representation of the product. Actual products may vary due to product enhancement, manufacturing changes, or screen settings.
+            </p>
+          </div>
+        </div>
 
         {/* Bottom Bar — full width across all columns */}
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
